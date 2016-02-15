@@ -3,6 +3,7 @@ os:
 script:
 - mkdir dist
 - echo 'hi' > dist/test.txt
+- cp pnglogo-blk.png dist/
 deploy:
   provider: s3
   access_key_id: AKIAIWUROPCPJQKONITA
