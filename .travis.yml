@@ -1,0 +1,21 @@
+os:
+- osx
+script:
+- mkdir dist
+- echo 'hi' > dist/test.txt
+deploy:
+  provider: s3
+  access_key_id: AKIAIWUROPCPJQKONITA
+  secret_access_key:
+    secure: w5jx3vAu8xQeDQoGiJ/EuBH9lp4Zz6s0T+vgG4cunsg+CaNTZruafqTa/eXcQ2VIFQNct8u9/Mf8zUhJ0W0a0w8/cUrLxwcBjmH2smrl3LjhYT3KELA5u+bcNq0et9HsiiW9l7HvunLk7BQvRdVXDhDj87A//94PyDe1sWhb67NTQvgvbUZHYspNzP7Fo6ZVUvro7srN5VeBlGJhA6sn5Qbpm9yPK/bghPrsKkEIBc2j8dvWjjwNgMr01fTqPKoy2HP9u1VwFio349nDP5CCEjd7zTMUGgAy/vo1vKdZUcabZOEZ1DQLWsKqR44weMrWtwegjaRxs8Ck+hzoJtwlUAwDGp/t+0t8h0FAWrJc4FEoenM/AxyII733udYt2o9epGqJCZaCWkSSqnqe9ohmiIf4aSJ8xAn3bVCDNOZRoeUGiaOy64yqneFAZgGoSDTGtwkDXdCmKq+G5EddOhl1cO/lPybYXmDijfJpyVwwd5NHpc9cjg1gKcEMvibd3LG6jxsn1N9XwgxDWpxvkg5gC2PxVug/y6ZIQm2VDSjUWUEH2TOg0USmrr8Bn0N8L0nmka9vHO2CXT1M3Y18pN4Bt3E6j4C31iF3GeavP4lslEzyzUin7+QBnk3VXHEOZ+c5hvui4nvVrOOhYkMhACc32Elj5DpU4XxRaoKix37GoDg=
+  bucket: mueditor
+  region: eu-west-1
+  skip_cleanup: true
+  local-dir: dist/
+  upload-dir: mu/$TRAVIS_OS_NAME
+  acl: public_read
+  on:
+    repo: stestagg/artifacttest
+    branch:
+    - master
+    - travis
